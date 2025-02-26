@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="list">List</string>
+    <string name="favorite">Favorite</string>
+    <string name="game">Game</string>
+    <string name="result">Result</string>
+
+    <string name="tv_registration">Let\'s get acquainted</string>
+    <string name="tv_registration2">Please enter your name and email</string>
+    <string name="acb_registration">Registration</string>
+    <string name="tv_login2">Please enter your name</string>
+    <string name="et_name">Name</string>
+    <string name="et_email">Email</string>
+    <string name="acb_login">Continue</string>
+    <string name="hello_my_friend">Hello my friend</string>
+
+    <string name="edittext_default">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+-.!@#$%^:{}|*()?1234567890</string>
+    <string name="all_games">All games</string>
+    <string name="delete_account">Delete account</string>
+    <string name="log_out">Log out</string>
+
+</resources>

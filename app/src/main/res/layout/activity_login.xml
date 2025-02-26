@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deepPurple_50">
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/hello_my_friend"
+        android:textColor="@color/indigo_900"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_login2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:alpha="0.5"
+        android:gravity="center"
+        android:text="@string/tv_login2"
+        android:textColor="@color/indigo_900"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/et_login"
+        style="@style/EditTextStyle"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:background="@drawable/tv_bg"
+        android:digits="@string/edittext_default"
+        android:gravity="center"
+        android:hint="@string/et_name"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="80dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login2"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/acb_enter"
+        style="@style/Button"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/acb_bg"
+        android:text="@string/acb_login"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/et_login"
+        app:layout_constraintStart_toStartOf="@+id/et_login"
+        app:layout_constraintTop_toBottomOf="@+id/et_login"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/acb_registration"
+        style="@style/Button"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:background="@drawable/acb_bg"
+        android:text="@string/acb_registration"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/acb_enter"
+        app:layout_constraintStart_toStartOf="@+id/acb_enter"
+        app:layout_constraintTop_toBottomOf="@+id/acb_enter"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
