@@ -25,7 +25,7 @@
         android:id="@+id/tv_login2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:alpha="0.5"
         android:gravity="center"
         android:text="@string/tv_login2"

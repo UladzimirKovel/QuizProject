@@ -13,9 +13,11 @@ interface QuizApi {
         @Query("category") category: String? = null,
     ): List<QuizResponse>
 
-    @GET("categories")
-    suspend fun getCategory(
-        @Header("x-api-key") apiKey: String,
-        @Query("category") category: String?
-    ) : List<QuizResponse>
+    @GET("questions")
+    suspend fun getQuestions(
+        @Query("category") category: String,
+        @Query("limit") limit: Int,
+        @Query("difficulty") difficulty: String,
+        @Query("x-api-key") apiKey: String
+    ): List<QuizResponse>
 }

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/deepPurple_50">
 
     <TextView
         android:id="@+id/tv_favorite"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
         android:gravity="center"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
@@ -18,8 +21,6 @@
         android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginBottom="100dp"
         tools:ignore="MissingConstraints" />
 
     <!-- Spinner для выбора категории -->
@@ -28,13 +29,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Select category"
-        android:textSize="23sp" />
+        android:textColor="@color/indigo_900"
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="16dp" />
 
     <!-- Spinner для выбора лимита вопросов -->
@@ -43,7 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Select the number of questions"
-        android:textSize="23sp" />
+        android:textColor="@color/indigo_900"
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/limitSpinner"
@@ -57,7 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Select difficulty"
-        android:textSize="23sp" />
+        android:textColor="@color/indigo_900"
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/difficultySpinner"
@@ -71,10 +77,11 @@
         style="@style/Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
         android:background="@drawable/acb_bg"
         android:padding="12dp"
         android:text="Start quiz"
-        android:layout_marginTop="190dp"
         android:textSize="18sp"
         android:textStyle="bold" />
+
 </LinearLayout>

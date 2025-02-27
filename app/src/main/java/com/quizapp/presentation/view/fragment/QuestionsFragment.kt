@@ -32,7 +32,7 @@ class QuestionsFragment: Fragment() {
     private fun setupListener() {
 
         binding.acbBack.setOnClickListener{
-            findNavController().navigate(R.id.listFragment)
+            parentFragmentManager.popBackStack()
         }
 
     }

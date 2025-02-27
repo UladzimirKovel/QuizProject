@@ -43,27 +43,27 @@ class MainActivity : AppCompatActivity() {
 
         replaceFragment(GameFragment(), "Game")
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
-
-            when (item.itemId) {
-                R.id.result -> {
-                    replaceFragment(ResultFragment(), "Result")
-                }
-
-                R.id.list -> {
-                    replaceFragment(ListFragment(), "List")
-                }
-
-                R.id.favorite -> {
-                    replaceFragment(FavoriteFragment(), "Favorite")
-                }
-
-                R.id.game -> {
-                    replaceFragment(GameFragment(), "Game")
-                }
-            }
-            return@setOnItemSelectedListener true
-        }
+//        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
+//
+//            when (item.itemId) {
+//                R.id.result -> {
+//                    replaceFragment(ResultFragment(), "Result")
+//                }
+//
+//                R.id.list -> {
+//                    replaceFragment(ListFragment(), "List")
+//                }
+//
+//                R.id.favorite -> {
+//                    replaceFragment(FavoriteFragment(), "Favorite")
+//                }
+//
+//                R.id.game -> {
+//                    replaceFragment(GameFragment(), "Game")
+//                }
+//            }
+//            return@setOnItemSelectedListener true
+//        }
 
         toolbar = findViewById(R.id.myToolbar)
         setSupportActionBar(toolbar)

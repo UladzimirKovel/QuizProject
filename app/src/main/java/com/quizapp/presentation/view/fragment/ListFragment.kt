@@ -22,7 +22,6 @@ class ListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ListViewModel by inject()
-    private val loginViewModel: LoginViewModel by inject()
     private val adapter: ListAdapter by inject{ parametersOf(findNavController()) }
 
     override fun onCreateView(
@@ -40,7 +39,6 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecycler()
-        val navController = findNavController()
 
         viewModel.questions.observe(this) { questions ->
             adapter.upQuestions(questions)

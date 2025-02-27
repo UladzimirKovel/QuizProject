@@ -36,9 +36,9 @@
             app:destination="@id/resultFragment" />
     </fragment>
     <activity
-        android:id="@+id/loginActivity"
-        android:name="com.quizapp.presentation.view.activity.LoginActivity"
-        android:label="LoginActivity" />
+    android:id="@+id/loginActivity"
+    android:name="com.quizapp.presentation.view.activity.LoginActivity"
+    android:label="LoginActivity" />
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.quizapp.presentation.view.fragment.FavoriteFragment"
