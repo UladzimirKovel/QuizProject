@@ -1,7 +1,9 @@
 package com.quizapp.presentation.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.favorite -> {
                     replaceFragment(FavoriteFragment(), "Favorite")
                 }
+
                 R.id.game -> {
                     replaceFragment(GameFragment(), "Game")
                 }
@@ -77,8 +80,23 @@ class MainActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.deleteAcc -> {
-
+                    viewModel.currentUser?.let { user ->
+                        viewModel.deleteUser(user.user)
+                        Toast.makeText(this, "User deleted", Toast.LENGTH_SHORT).show()
+                    }
                     drawerLayout.closeDrawer(GravityCompat.START) // Закрыть Drawer после нажати
+                    true
+                }
+
+                R.id.all_games -> {
+                    navController.navigate(R.id.listFragment)
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+
+                R.id.quit -> {
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish() // Закрыть текущую активность, чтобы пользователь не мог вернуться назад
                     true
                 }
 
@@ -89,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -102,6 +121,7 @@ class MainActivity : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

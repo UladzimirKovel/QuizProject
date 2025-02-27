@@ -25,7 +25,8 @@ class LoginViewModel(
     private val _deleteUserStatus = MutableLiveData<Boolean?>()
     val deleteUserStatus: LiveData<Boolean?> get() = _deleteUserStatus
 
-    val database = QuizDatabase.getDatabase(context)
+    //    val database = QuizDatabase.getDatabase(context)
+    var currentUser: UserEntity? = null
 
     fun registrationUser(user: String, email: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -38,6 +39,15 @@ class LoginViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             val success = repository.loginUser(user)
             _registrationUser.postValue(success != null)
+            currentUser = success
+        }
+    }
+
+    fun deleteUser(user: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUser(user)
+            _deleteUserStatus.postValue(true)
+            currentUser = null
         }
     }
 

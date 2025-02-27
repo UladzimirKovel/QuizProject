@@ -7,4 +7,5 @@ interface UserRepository {
 
     suspend fun loginUser(user: String): UserEntity?
 
+    suspend fun deleteUser(user: String)
 }

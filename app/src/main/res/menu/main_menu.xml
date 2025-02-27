@@ -4,7 +4,7 @@
 
 
         <item
-            android:id="@+id/listFragment"
+            android:id="@+id/all_games"
             android:icon="@drawable/image_all"
             android:title="@string/all_games" />
 
@@ -14,7 +14,7 @@
             android:title="@string/delete_account" />
 
         <item
-            android:id="@+id/loginActivity"
+            android:id="@+id/quit"
             android:icon="@drawable/image_exit"
             android:title="@string/log_out" />
 

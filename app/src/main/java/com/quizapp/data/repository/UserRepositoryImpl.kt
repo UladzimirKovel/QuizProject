@@ -20,4 +20,8 @@ class UserRepositoryImpl(
         return userDatabase.userDao().getUser(user)
     }
 
+    override suspend fun deleteUser(user: String) {
+        userDatabase.userDao().deleteUser(user)
+    }
+
 }

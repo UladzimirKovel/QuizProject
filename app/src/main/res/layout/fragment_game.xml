@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/deepPurple_50">
 
     <TextView
@@ -24,10 +24,14 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_start_quiz"
-        android:background="@drawable/acb_bg"
         android:layout_width="370dp"
+        style="@style/Button"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/acb_bg"
+        android:text="Start"
+        android:textSize="23sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

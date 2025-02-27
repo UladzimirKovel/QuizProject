@@ -17,5 +17,7 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE _user = :user")
     fun getUser(user: String): UserEntity?
 
+    @Query("DELETE FROM users WHERE _user = :user")
+    fun deleteUser(user: String)
 }
 
