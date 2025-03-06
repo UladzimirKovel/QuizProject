@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.quizapp.data.model.QuizResponse
 import com.quizapp.data.repository.RetrofitClient
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ListViewModel : ViewModel() {
@@ -27,16 +26,5 @@ class ListViewModel : ViewModel() {
         }
     }
 
-    fun loadQuestions(category: String, limit: Int, difficulty: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val response = RetrofitClient.apiService.getQuestions(category, limit, difficulty, apiKey)
-                _questions.value = response
 
-                Log.e("Questions", "$response")
-            } catch (e: Exception) {
-
-            }
-        }
-    }
 }

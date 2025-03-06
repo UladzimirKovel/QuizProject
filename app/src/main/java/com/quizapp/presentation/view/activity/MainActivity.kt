@@ -22,10 +22,9 @@ import com.quizapp.R
 import com.quizapp.presentation.view.fragment.FavoriteFragment
 import com.quizapp.presentation.view.fragment.GameFragment
 import com.quizapp.presentation.view.fragment.ListFragment
-import com.quizapp.presentation.view.fragment.ResultFragment
+import com.quizapp.presentation.view.fragment.ScoreFragment
 import com.quizapp.presentation.view_model.LoginViewModel
 import org.koin.android.ext.android.inject
-import kotlin.String
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,27 +42,27 @@ class MainActivity : AppCompatActivity() {
 
         replaceFragment(GameFragment(), "Game")
 
-//        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
-//
-//            when (item.itemId) {
-//                R.id.result -> {
-//                    replaceFragment(ResultFragment(), "Result")
-//                }
-//
-//                R.id.list -> {
-//                    replaceFragment(ListFragment(), "List")
-//                }
-//
-//                R.id.favorite -> {
-//                    replaceFragment(FavoriteFragment(), "Favorite")
-//                }
-//
-//                R.id.game -> {
-//                    replaceFragment(GameFragment(), "Game")
-//                }
-//            }
-//            return@setOnItemSelectedListener true
-//        }
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
+
+            when (item.itemId) {
+                R.id.score -> {
+                    replaceFragment(ScoreFragment(), "Score")
+                }
+
+                R.id.list -> {
+                    replaceFragment(ListFragment(), "List")
+                }
+
+                R.id.favorite -> {
+                    replaceFragment(FavoriteFragment(), "Favorite")
+                }
+
+                R.id.game -> {
+                    replaceFragment(GameFragment(), "Game")
+                }
+            }
+            return@setOnItemSelectedListener true
+        }
 
         toolbar = findViewById(R.id.myToolbar)
         setSupportActionBar(toolbar)
@@ -84,22 +83,14 @@ class MainActivity : AppCompatActivity() {
                         viewModel.deleteUser(user.user)
                         Toast.makeText(this, "User deleted", Toast.LENGTH_SHORT).show()
                     }
-                    drawerLayout.closeDrawer(GravityCompat.START) // Закрыть Drawer после нажати
-                    true
-                }
-
-                R.id.all_games -> {
-                    navController.navigate(R.id.listFragment)
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
-
                 R.id.quit -> {
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    finish() // Закрыть текущую активность, чтобы пользователь не мог вернуться назад
+                    finish()
                     true
                 }
-
                 else -> {
                     NavigationUI.onNavDestinationSelected(menuItem, navController)
                     drawerLayout.closeDrawer(GravityCompat.START)
@@ -107,7 +98,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -121,7 +111,6 @@ class MainActivity : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -140,26 +129,28 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_listFragment_to_questionsFragment,
                 R.id.action_listFragment_to_loginActivity,
                 R.id.action_listFragment_to_favoriteFragment,
-                R.id.action_listFragment_to_resultFragment,
+                R.id.action_listFragment_to_scoreFragment,
                 R.id.action_listFragment_to_gameFragment,
                 R.id.action_questionsFragment_to_favoriteFragment,
                 R.id.action_questionsFragment_to_resultFragment,
                 R.id.action_favoriteFragment_to_loginActivity,
                 R.id.action_favoriteFragment_to_gameFragment,
                 R.id.action_favoriteFragment_to_listFragment,
-                R.id.action_favoriteFragment_to_resultFragment,
+                R.id.action_favoriteFragment_to_scoreFragment,
                 R.id.action_gameFragment_to_loginActivity,
                 R.id.action_gameFragment_to_listFragment,
-                R.id.action_gameFragment_to_resultFragment,
+                R.id.action_gameFragment_to_scoreFragment,
                 R.id.action_gameFragment_to_favoriteFragment,
                 R.id.action_gameFragment_to_questionsFragment,
                 R.id.action_resultFragment_to_loginActivity,
                 R.id.action_resultFragment_to_gameFragment,
                 R.id.action_resultFragment_to_listFragment,
+                R.id.action_resultFragment_to_scoreFragment,
                 R.id.action_resultFragment_to_favoriteFragment,
                 R.id.loginActivity,
                 R.id.listFragment,
-                R.id.deleteAcc
+                R.id.deleteAcc,
+                R.id.scoreFragment
             )
         )
     }

@@ -17,8 +17,8 @@
         android:icon="@drawable/image_favorite"/>
 
     <item
-        android:id="@+id/result"
-        android:title="@string/result"
+        android:id="@+id/score"
+        android:title="@string/score"
         android:icon="@drawable/image_result"/>
 
 </menu>

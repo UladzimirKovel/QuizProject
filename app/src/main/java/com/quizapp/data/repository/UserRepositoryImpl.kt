@@ -7,6 +7,7 @@ import com.quizapp.domain.repository.UserRepository
 class UserRepositoryImpl(
     private val userDatabase: QuizDatabase
 ) : UserRepository {
+
     override suspend fun registrationUser(user: String, email: String): Boolean {
         val existingUser = userDatabase.userDao().getUserByEmail( email)
         return if (existingUser == null) {
@@ -23,5 +24,4 @@ class UserRepositoryImpl(
     override suspend fun deleteUser(user: String) {
         userDatabase.userDao().deleteUser(user)
     }
-
 }

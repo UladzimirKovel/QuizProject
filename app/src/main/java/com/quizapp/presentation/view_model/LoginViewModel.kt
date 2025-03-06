@@ -7,15 +7,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.quizapp.data.database.QuizDatabase
 import com.quizapp.data.entities.UserEntity
 import com.quizapp.domain.repository.UserRepository
 import com.quizapp.domain.use_cases.isEmailValid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginViewModel(
-    context: Context,
     private val repository: UserRepository
 ) : ViewModel() {
 
@@ -25,7 +24,6 @@ class LoginViewModel(
     private val _deleteUserStatus = MutableLiveData<Boolean?>()
     val deleteUserStatus: LiveData<Boolean?> get() = _deleteUserStatus
 
-    //    val database = QuizDatabase.getDatabase(context)
     var currentUser: UserEntity? = null
 
     fun registrationUser(user: String, email: String) {

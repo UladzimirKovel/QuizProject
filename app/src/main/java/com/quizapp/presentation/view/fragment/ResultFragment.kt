@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.findNavController
+import com.quizapp.R
 import com.quizapp.databinding.FragmentResultBinding
 import com.quizapp.presentation.view_model.ResultViewModel
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ResultFragment : Fragment() {
@@ -17,7 +17,6 @@ class ResultFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ResultViewModel by viewModel()
-//    private val adapter: ResultAdapter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +31,22 @@ class ResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRecycler()
-    }
+        val score = ResultFragmentArgs.fromBundle(requireArguments()).score
+        val totalQuestions = ResultFragmentArgs.fromBundle(requireArguments()).totalQuestions
 
-    private fun initRecycler() {
-//        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-    }
+        binding.scoreTextView.text = "Ваш результат: $score из $totalQuestions"
 
+        // Сохраняем результат
+        viewModel.saveScore("user123", score, totalQuestions)
+
+        binding.playAgainButton.setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_gameFragment)
+        }
+
+        binding.viewStatsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_scoreFragment)
+        }
+    }
 
     override fun onDestroy() {
         _binding = null

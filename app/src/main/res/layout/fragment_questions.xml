@@ -8,23 +8,14 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_back"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:background="@drawable/acb_bg"
         android:text="Back"
-        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_number_question"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/image_favorite"
-        app:layout_constraintBottom_toTopOf="@+id/tv_number_question"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -32,11 +23,11 @@
         android:id="@+id/tv_number_question"
         android:layout_width="200dp"
         android:layout_height="30dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold"
-        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_question"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,45 +50,53 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer1"
         style="@style/Button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_question"
         app:layout_constraintStart_toStartOf="@+id/tv_question"
         app:layout_constraintTop_toBottomOf="@+id/tv_question"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer2"
         style="@style/Button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/acb_answer1"
         app:layout_constraintStart_toStartOf="@+id/acb_answer1"
         app:layout_constraintTop_toBottomOf="@+id/acb_answer1"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer3"
         style="@style/Button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/acb_answer2"
         app:layout_constraintStart_toStartOf="@+id/acb_answer2"
         app:layout_constraintTop_toBottomOf="@+id/acb_answer2"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer4"
         style="@style/Button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/acb_answer3"
         app:layout_constraintStart_toStartOf="@+id/acb_answer3"
         app:layout_constraintTop_toBottomOf="@+id/acb_answer3"

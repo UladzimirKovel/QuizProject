@@ -6,6 +6,8 @@ import com.quizapp.di.adapterQuestionModule
 import com.quizapp.di.loginViewModelModule
 import com.quizapp.di.resultViewModelModule
 import com.quizapp.di.listViewModelModule
+import com.quizapp.di.questionViewModelModule
+import com.quizapp.di.scoreModule
 import com.quizapp.di.userModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -29,7 +31,9 @@ class App : Application() {
                 listViewModelModule,
                 adapterQuestionModule,
                 adapterResultModule,
-                userModule
+                userModule,
+                questionViewModelModule,
+                scoreModule
             )
         }
     }

@@ -17,19 +17,3 @@ data class QuizResponse(
     @SerializedName("category") val category : String,
     @SerializedName("difficulty") val difficulty : String
 ) : Parcelable
-
-@Parcelize
-data class QuizGame(
-    val question: String,
-    val answers: Answers,
-    val correctAnswer: String
-) : Parcelable
-
-@Parcelize
-data class Answers(
-    val answerA: String,
-    val answerB: String,
-    val answerC: String,
-    val answerD: String
-) : Parcelable
-

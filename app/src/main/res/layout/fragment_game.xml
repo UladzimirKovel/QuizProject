@@ -9,7 +9,7 @@
     android:background="@color/deepPurple_50">
 
     <TextView
-        android:id="@+id/tv_favorite"
+        android:id="@+id/tv_title"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -17,13 +17,12 @@
         android:gravity="center"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:text="Favorite"
+        android:text="Game"
         android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
 
-    <!-- Spinner для выбора категории -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,9 +36,8 @@
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"/>
 
-    <!-- Spinner для выбора лимита вопросов -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,9 +51,8 @@
         android:id="@+id/limitSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"/>
 
-    <!-- Spinner для выбора сложности -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp" />
 
-    <!-- Кнопка для подтверждения выбора -->
     <Button
         android:id="@+id/startButton"
         style="@style/Button"

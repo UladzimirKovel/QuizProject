@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-        <item
-            android:id="@+id/all_games"
-            android:icon="@drawable/image_all"
-            android:title="@string/all_games" />
-
         <item
             android:id="@+id/deleteAcc"
             android:icon="@drawable/image_delete"

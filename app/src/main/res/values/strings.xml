@@ -3,7 +3,7 @@
     <string name="list">List</string>
     <string name="favorite">Favorite</string>
     <string name="game">Game</string>
-    <string name="result">Result</string>
+    <string name="score">Score</string>
 
     <string name="tv_registration">Let\'s get acquainted</string>
     <string name="tv_registration2">Please enter your name and email</string>
