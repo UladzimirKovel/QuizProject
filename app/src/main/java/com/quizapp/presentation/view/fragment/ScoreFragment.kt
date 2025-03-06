@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.quizapp.databinding.FragmentScoreBinding
 
-class ScoreFragment: Fragment() {
+
+class ScoreFragment : Fragment() {
 
     private var _binding: FragmentScoreBinding? = null
     private val binding get() = _binding!!
@@ -17,8 +18,7 @@ class ScoreFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentScoreBinding.inflate(layoutInflater, container, false)
-
+        _binding = FragmentScoreBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,8 +27,8 @@ class ScoreFragment: Fragment() {
 
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
-        super.onDestroy()
     }
 }

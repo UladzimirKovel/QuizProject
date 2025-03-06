@@ -85,6 +85,8 @@ class QuestionsFragment : Fragment() {
             acbAnswer2.isVisible = !show
             acbAnswer3.isVisible = !show
             acbAnswer4.isVisible = !show
+            acbAnswer5.isVisible = !show
+            acbAnswer6.isVisible = !show
         }
     }
 
@@ -96,9 +98,9 @@ class QuestionsFragment : Fragment() {
     private fun updateUI(state: GameState.Playing) {
         binding.apply {
             tvQuestion.text = state.currentQuestion.question
-            tvNumberQuestion.text = "Вопрос ${state.currentIndex + 1} из ${state.totalQuestions} (Счет: ${state.score})"
+            tvNumberQuestion.text = "Question ${state.currentIndex + 1} of ${state.totalQuestions} (Score: ${state.score})"
             
-            val answerButtons = listOf(acbAnswer1, acbAnswer2, acbAnswer3, acbAnswer4)
+            val answerButtons = listOf(acbAnswer1, acbAnswer2, acbAnswer3, acbAnswer4, acbAnswer5, acbAnswer6)
             
             // Очищаем все кнопки
             answerButtons.forEach { button ->
@@ -122,14 +124,20 @@ class QuestionsFragment : Fragment() {
                 Log.d(TAG, "  B: '${answers["answer_b"]}'")
                 Log.d(TAG, "  C: '${answers["answer_c"]}'")
                 Log.d(TAG, "  D: '${answers["answer_d"]}'")
+                Log.d(TAG, "  E: '${answers["answer_e"]}'")
+                Log.d(TAG, "  F: '${answers["answer_f"]}'")
                 
                 // Устанавливаем ответы на кнопки
                 val answersList = listOf(
                     "answer_a" to (answers["answer_a"] ?: ""),
                     "answer_b" to (answers["answer_b"] ?: ""),
                     "answer_c" to (answers["answer_c"] ?: ""),
-                    "answer_d" to (answers["answer_d"] ?: "")
+                    "answer_d" to (answers["answer_d"] ?: ""),
+                    "answer_e" to (answers["answer_e"] ?: ""),
+                    "answer_f" to (answers["answer_f"] ?: "")
                 )
+                
+                Log.d(TAG, "Available answer keys in correct_answers: ${state.currentQuestion.correctAnswers?.keys}")
                 
                 answersList.forEachIndexed { index, (key, value) ->
                     if (index < answerButtons.size && value.isNotEmpty()) {
@@ -138,6 +146,7 @@ class QuestionsFragment : Fragment() {
                             isVisible = true
                             setOnClickListener {
                                 Log.d(TAG, "Selected answer - Key: '$key', Value: '$value'")
+                                Log.d(TAG, "Is this key present in correct_answers? ${state.currentQuestion.correctAnswers?.containsKey(key)}")
                                 viewModel.checkAnswer(key)
                             }
                         }

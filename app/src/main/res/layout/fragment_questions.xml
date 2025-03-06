@@ -37,9 +37,9 @@
     <TextView
         android:id="@+id/tv_question"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:textColor="@color/black"
@@ -53,11 +53,11 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer1"
         style="@style/Button"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_question"
         app:layout_constraintStart_toStartOf="@+id/tv_question"
         app:layout_constraintTop_toBottomOf="@+id/tv_question"
@@ -66,11 +66,11 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer2"
         style="@style/Button"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/acb_answer1"
         app:layout_constraintStart_toStartOf="@+id/acb_answer1"
         app:layout_constraintTop_toBottomOf="@+id/acb_answer1"
@@ -79,11 +79,11 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer3"
         style="@style/Button"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/acb_answer2"
         app:layout_constraintStart_toStartOf="@+id/acb_answer2"
         app:layout_constraintTop_toBottomOf="@+id/acb_answer2"
@@ -92,14 +92,40 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_answer4"
         style="@style/Button"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/acb_answer3"
         app:layout_constraintStart_toStartOf="@+id/acb_answer3"
         app:layout_constraintTop_toBottomOf="@+id/acb_answer3"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/acb_answer5"
+        style="@style/Button"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/acb_answer4"
+        app:layout_constraintStart_toStartOf="@+id/acb_answer4"
+        app:layout_constraintTop_toBottomOf="@+id/acb_answer4"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/acb_answer6"
+        style="@style/Button"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/acb_answer5"
+        app:layout_constraintStart_toStartOf="@+id/acb_answer5"
+        app:layout_constraintTop_toBottomOf="@+id/acb_answer5"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

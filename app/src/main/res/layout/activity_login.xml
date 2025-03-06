@@ -40,7 +40,7 @@
     <EditText
         android:id="@+id/et_login"
         style="@style/EditTextStyle"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/tv_bg"
@@ -58,7 +58,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_enter"
         style="@style/Button"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/acb_bg"
@@ -73,7 +73,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_registration"
         style="@style/Button"
-        android:layout_width="370dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
         android:background="@drawable/acb_bg"
         android:text="@string/acb_registration"

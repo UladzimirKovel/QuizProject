@@ -34,7 +34,7 @@ class ResultFragment : Fragment() {
         val score = ResultFragmentArgs.fromBundle(requireArguments()).score
         val totalQuestions = ResultFragmentArgs.fromBundle(requireArguments()).totalQuestions
 
-        binding.scoreTextView.text = "Ваш результат: $score из $totalQuestions"
+        binding.scoreTextView.text = "Your result: $score из $totalQuestions"
 
         // Сохраняем результат
         viewModel.saveScore("user123", score, totalQuestions)

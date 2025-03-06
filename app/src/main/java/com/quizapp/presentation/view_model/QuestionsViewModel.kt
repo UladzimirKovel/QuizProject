@@ -21,8 +21,12 @@ class QuestionsViewModel : ViewModel() {
     private var questions: List<Question> = emptyList()
     private var score = 0
     private var currentQuestionIndex = 0
+    private var currentCategory: String = ""
+    private var currentDifficulty: String = ""
 
     fun loadQuestions(category: String, difficulty: String, limit: Int) {
+        currentCategory = category
+        currentDifficulty = difficulty
         Log.d(TAG, "Loading questions: category=$category, difficulty=$difficulty, limit=$limit")
         viewModelScope.launch {
             try {
@@ -90,16 +94,24 @@ class QuestionsViewModel : ViewModel() {
         Log.d(TAG, "=== Answer Check Debug ===")
         Log.d(TAG, "Question ${currentQuestionIndex + 1}: ${currentQuestion.question}")
         Log.d(TAG, "Selected answer: '$selectedAnswer'")
-        Log.d(TAG, "Correct answers: ${currentQuestion.correctAnswers}")
-        
+        Log.d(TAG, "Correct answers map: ${currentQuestion.correctAnswers}")
+
         // Проверяем, является ли выбранный ответ правильным
-        val isCorrect = currentQuestion.correctAnswers?.get(selectedAnswer) == "true"
-        
+        val correctAnswerValue = currentQuestion.correctAnswers?.get(selectedAnswer)
+        Log.d(TAG, "Correct answer value for selected key: '$correctAnswerValue'")
+
+        val isCorrect = when (correctAnswerValue?.lowercase()) {
+            "true" -> true
+            "1" -> true
+            "yes" -> true
+            else -> false
+        }
+
         if (isCorrect) {
             score++
             Log.d(TAG, "✓ Correct answer! New score: $score")
         } else {
-            Log.d(TAG, "✗ Wrong answer. Selected: '$selectedAnswer'")
+            Log.d(TAG, "✗ Wrong answer. Selected: '$selectedAnswer', Value: '$correctAnswerValue'")
         }
 
         currentQuestionIndex++
@@ -121,6 +133,4 @@ class QuestionsViewModel : ViewModel() {
             )
         }
     }
-
-    fun getCurrentScore(): Int = score
 }
