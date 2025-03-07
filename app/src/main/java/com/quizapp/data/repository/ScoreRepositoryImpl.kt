@@ -16,4 +16,11 @@ class ScoreRepositoryImpl(
         userDatabase.scoreDao().insertScore(score)
     }
 
+    override suspend fun getUserScores(userId: String): List<ScoreEntity> {
+        return userDatabase.scoreDao().getUserScores(userId)
+    }
+
+    override suspend fun deleteAllScore() {
+        userDatabase.scoreDao().deleteAllScores()
+    }
 }

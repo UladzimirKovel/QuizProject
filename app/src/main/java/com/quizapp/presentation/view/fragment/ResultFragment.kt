@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.fragment.findNavController
 import com.quizapp.R
 import com.quizapp.databinding.FragmentResultBinding
@@ -17,6 +18,7 @@ class ResultFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ResultViewModel by viewModel()
+    private val args: ResultFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,26 +26,30 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentResultBinding.inflate(layoutInflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val score = ResultFragmentArgs.fromBundle(requireArguments()).score
-        val totalQuestions = ResultFragmentArgs.fromBundle(requireArguments()).totalQuestions
+        val score = args.score
+        val totalQuestions = args.totalQuestions
 
-        binding.scoreTextView.text = "Your result: $score из $totalQuestions"
+        // Отображаем результат
+        binding.actvScore.text = "Your score: $score/$totalQuestions"
 
         // Сохраняем результат
         viewModel.saveScore("user123", score, totalQuestions)
 
-        binding.playAgainButton.setOnClickListener {
+        binding.acbPlayAgain.setOnClickListener {
             findNavController().navigate(R.id.action_resultFragment_to_gameFragment)
         }
 
-        binding.viewStatsButton.setOnClickListener {
+        binding.acbResult.setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_scoreFragment)
+        }
+
+        binding.acbSave.setOnClickListener {
             findNavController().navigate(R.id.action_resultFragment_to_scoreFragment)
         }
     }

@@ -1,13 +1,13 @@
 package com.quizapp
 
 import android.app.Application
-import com.quizapp.di.adapterResultModule
-import com.quizapp.di.adapterQuestionModule
+import com.quizapp.di.adapterScoreModule
 import com.quizapp.di.loginViewModelModule
 import com.quizapp.di.resultViewModelModule
 import com.quizapp.di.listViewModelModule
 import com.quizapp.di.questionViewModelModule
 import com.quizapp.di.scoreModule
+import com.quizapp.di.scoreViewModelModule
 import com.quizapp.di.userModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -29,11 +29,11 @@ class App : Application() {
                 loginViewModelModule,
                 resultViewModelModule,
                 listViewModelModule,
-                adapterQuestionModule,
-                adapterResultModule,
+                adapterScoreModule,
                 userModule,
                 questionViewModelModule,
-                scoreModule
+                scoreModule,
+                scoreViewModelModule
             )
         }
     }

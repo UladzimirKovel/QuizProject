@@ -21,7 +21,6 @@ import com.google.android.material.navigation.NavigationView
 import com.quizapp.R
 import com.quizapp.presentation.view.fragment.FavoriteFragment
 import com.quizapp.presentation.view.fragment.GameFragment
-import com.quizapp.presentation.view.fragment.ListFragment
 import com.quizapp.presentation.view.fragment.ScoreFragment
 import com.quizapp.presentation.view_model.LoginViewModel
 import org.koin.android.ext.android.inject
@@ -40,25 +39,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        replaceFragment(GameFragment(), "Game")
-
         findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
 
             when (item.itemId) {
                 R.id.score -> {
-                    replaceFragment(ScoreFragment(), "Score")
-                }
-
-                R.id.list -> {
-                    replaceFragment(ListFragment(), "List")
+                    navController.navigate(R.id.scoreFragment)
                 }
 
                 R.id.favorite -> {
-                    replaceFragment(FavoriteFragment(), "Favorite")
+                    navController.navigate(R.id.favoriteFragment)
                 }
 
                 R.id.game -> {
-                    replaceFragment(GameFragment(), "Game")
+                    navController.navigate(R.id.gameFragment)
                 }
             }
             return@setOnItemSelectedListener true
@@ -82,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.currentUser?.let { user ->
                         viewModel.deleteUser(user.user)
                         Toast.makeText(this, "User deleted", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     }
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
@@ -115,40 +109,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment, tag: String) {
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
-
     private fun setOfActions() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.action_listFragment_to_questionsFragment,
-                R.id.action_listFragment_to_loginActivity,
-                R.id.action_listFragment_to_favoriteFragment,
-                R.id.action_listFragment_to_scoreFragment,
-                R.id.action_listFragment_to_gameFragment,
                 R.id.action_questionsFragment_to_favoriteFragment,
                 R.id.action_questionsFragment_to_resultFragment,
                 R.id.action_favoriteFragment_to_loginActivity,
                 R.id.action_favoriteFragment_to_gameFragment,
-                R.id.action_favoriteFragment_to_listFragment,
                 R.id.action_favoriteFragment_to_scoreFragment,
                 R.id.action_gameFragment_to_loginActivity,
-                R.id.action_gameFragment_to_listFragment,
                 R.id.action_gameFragment_to_scoreFragment,
                 R.id.action_gameFragment_to_favoriteFragment,
                 R.id.action_gameFragment_to_questionsFragment,
                 R.id.action_resultFragment_to_loginActivity,
                 R.id.action_resultFragment_to_gameFragment,
-                R.id.action_resultFragment_to_listFragment,
                 R.id.action_resultFragment_to_scoreFragment,
                 R.id.action_resultFragment_to_favoriteFragment,
+                R.id.action_scoreFragment_to_gameFragment,
+                R.id.action_scoreFragment_to_favoriteFragment,
                 R.id.loginActivity,
-                R.id.listFragment,
                 R.id.deleteAcc,
                 R.id.scoreFragment
             )

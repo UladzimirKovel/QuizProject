@@ -15,4 +15,7 @@ interface ScoreDao {
 
     @Query("SELECT * FROM scores WHERE userId = :userId ORDER BY timestamp DESC")
     fun getUserScores(userId: String): List<ScoreEntity>
+
+    @Query("DELETE FROM scores")
+    suspend fun deleteAllScores()
 }

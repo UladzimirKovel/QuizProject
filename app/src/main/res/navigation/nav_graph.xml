@@ -5,26 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/gameFragment">
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.quizapp.presentation.view.fragment.ListFragment"
-        android:label="ListFragment">
-        <action
-            android:id="@+id/action_listFragment_to_questionsFragment"
-            app:destination="@id/questionsFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_loginActivity"
-            app:destination="@id/loginActivity" />
-        <action
-            android:id="@+id/action_listFragment_to_scoreFragment"
-            app:destination="@id/scoreFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/questionsFragment"
         android:name="com.quizapp.presentation.view.fragment.QuestionsFragment"
         android:label="QuestionsFragment" >
@@ -66,9 +46,6 @@
             android:id="@+id/action_favoriteFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
-            android:id="@+id/action_favoriteFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
             android:id="@+id/action_favoriteFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
         <action
@@ -93,9 +70,6 @@
                 app:argType="integer" />
         </action>
         <action
-            android:id="@+id/action_gameFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
             android:id="@+id/action_gameFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
         <action
@@ -119,9 +93,6 @@
             android:id="@+id/action_resultFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
         <action
-            android:id="@+id/action_resultFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
             android:id="@+id/action_resultFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
         <action
@@ -135,9 +106,6 @@
         android:id="@+id/scoreFragment"
         android:name="com.quizapp.presentation.view.fragment.ScoreFragment"
         android:label="ScoreFragment" >
-        <action
-            android:id="@+id/action_scoreFragment_to_listFragment"
-            app:destination="@id/listFragment" />
         <action
             android:id="@+id/action_scoreFragment_to_gameFragment"
             app:destination="@id/gameFragment" />

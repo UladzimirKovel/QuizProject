@@ -7,11 +7,6 @@
         android:icon="@drawable/image_category"/>
 
     <item
-        android:id="@+id/list"
-        android:title="@string/list"
-        android:icon="@drawable/image_list"/>
-
-    <item
         android:id="@+id/favorite"
         android:title="@string/favorite"
         android:icon="@drawable/image_favorite"/>

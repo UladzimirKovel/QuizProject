@@ -38,10 +38,13 @@ class QuestionsFragment : Fragment() {
         val difficulty = QuestionsFragmentArgs.fromBundle(requireArguments()).difficulty
         val questionCount = QuestionsFragmentArgs.fromBundle(requireArguments()).limits
 
-        Log.d(TAG, "Starting new game: category=$category, difficulty=$difficulty, count=$questionCount")
+        Log.d(
+            TAG,
+            "Starting new game: category=$category, difficulty=$difficulty, count=$questionCount"
+        )
         viewModel.loadQuestions(category, difficulty, questionCount)
         setupObservers()
-        
+
         binding.acbBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -54,21 +57,25 @@ class QuestionsFragment : Fragment() {
                 is GameState.Loading -> {
                     showLoading(true)
                 }
+
                 is GameState.Playing -> {
                     showLoading(false)
                     updateUI(state)
                 }
+
                 is GameState.Finished -> {
                     val finalScore = state.finalScore
                     val total = state.totalQuestions
                     Log.d(TAG, "Game finished - Score: $finalScore/$total")
-                    
-                    val action = QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment(
-                        score = finalScore,
-                        totalQuestions = total
-                    )
+
+                    val action =
+                        QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment(
+                            score = finalScore,
+                            totalQuestions = total
+                        )
                     findNavController().navigate(action)
                 }
+
                 is GameState.Error -> {
                     showLoading(false)
                     showError()
@@ -98,10 +105,12 @@ class QuestionsFragment : Fragment() {
     private fun updateUI(state: GameState.Playing) {
         binding.apply {
             tvQuestion.text = state.currentQuestion.question
-            tvNumberQuestion.text = "Question ${state.currentIndex + 1} of ${state.totalQuestions} (Score: ${state.score})"
-            
-            val answerButtons = listOf(acbAnswer1, acbAnswer2, acbAnswer3, acbAnswer4, acbAnswer5, acbAnswer6)
-            
+            tvNumberQuestion.text =
+                "Question ${state.currentIndex + 1} of ${state.totalQuestions} (Score: ${state.score})"
+
+            val answerButtons =
+                listOf(acbAnswer1, acbAnswer2, acbAnswer3, acbAnswer4, acbAnswer5, acbAnswer6)
+
             // Очищаем все кнопки
             answerButtons.forEach { button ->
                 button.apply {
@@ -115,7 +124,7 @@ class QuestionsFragment : Fragment() {
             Log.d(TAG, "Showing question ${state.currentIndex + 1}/${state.totalQuestions}")
             Log.d(TAG, "Question: ${state.currentQuestion.question}")
             Log.d(TAG, "Current score: ${state.score}")
-            
+
             // Получаем ответы из Map
             val currentAnswers = state.currentQuestion.answers
             Log.d(TAG, "Answers:")
@@ -126,7 +135,7 @@ class QuestionsFragment : Fragment() {
                 Log.d(TAG, "  D: '${answers["answer_d"]}'")
                 Log.d(TAG, "  E: '${answers["answer_e"]}'")
                 Log.d(TAG, "  F: '${answers["answer_f"]}'")
-                
+
                 // Устанавливаем ответы на кнопки
                 val answersList = listOf(
                     "answer_a" to (answers["answer_a"] ?: ""),
@@ -136,9 +145,12 @@ class QuestionsFragment : Fragment() {
                     "answer_e" to (answers["answer_e"] ?: ""),
                     "answer_f" to (answers["answer_f"] ?: "")
                 )
-                
-                Log.d(TAG, "Available answer keys in correct_answers: ${state.currentQuestion.correctAnswers?.keys}")
-                
+
+                Log.d(
+                    TAG,
+                    "Available answer keys in correct_answers: ${state.currentQuestion.correctAnswers?.keys}"
+                )
+
                 answersList.forEachIndexed { index, (key, value) ->
                     if (index < answerButtons.size && value.isNotEmpty()) {
                         answerButtons[index].apply {
@@ -146,7 +158,12 @@ class QuestionsFragment : Fragment() {
                             isVisible = true
                             setOnClickListener {
                                 Log.d(TAG, "Selected answer - Key: '$key', Value: '$value'")
-                                Log.d(TAG, "Is this key present in correct_answers? ${state.currentQuestion.correctAnswers?.containsKey(key)}")
+                                Log.d(
+                                    TAG,
+                                    "Is this key present in correct_answers? ${
+                                        state.currentQuestion.correctAnswers?.containsKey(key)
+                                    }"
+                                )
                                 viewModel.checkAnswer(key)
                             }
                         }

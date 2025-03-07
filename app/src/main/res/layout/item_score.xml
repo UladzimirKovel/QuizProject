@@ -16,37 +16,29 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvUser"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="Category" />
-
-        <TextView
-            android:id="@+id/tvDifficulty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:textSize="16sp"
-            tools:text="Difficulty" />
+            android:textStyle="bold"
+            tools:text="user name" />
 
         <TextView
             android:id="@+id/tvScore"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
             tools:text="Score: 5/10" />
 
         <TextView
             android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray"
-            tools:text="01.01.2024 12:00" />
+            tools:text="date" />
 
     </LinearLayout>
 

@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.quizapp"
-        minSdk = 35
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -66,5 +66,4 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
-//    implementation(libs.androidx.navigation.safe.args.gradle.plugin)
 }

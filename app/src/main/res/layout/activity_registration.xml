@@ -41,7 +41,7 @@
     <EditText
         android:id="@+id/et_registration"
         style="@style/EditTextStyle"
-        android:layout_width="400dp"
+        android:layout_width="390dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/tv_bg"
@@ -59,7 +59,7 @@
     <EditText
         android:id="@+id/et_email"
         style="@style/EditTextStyle"
-        android:layout_width="400dp"
+        android:layout_width="390dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/tv_bg"
@@ -76,7 +76,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_enter"
         style="@style/Button"
-        android:layout_width="400dp"
+        android:layout_width="390dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/acb_bg"
