@@ -28,6 +28,7 @@ class QuestionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentQuestionsBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -138,12 +139,12 @@ class QuestionsFragment : Fragment() {
 
                 // Устанавливаем ответы на кнопки
                 val answersList = listOf(
-                    "answer_a" to (answers["answer_a"] ?: ""),
-                    "answer_b" to (answers["answer_b"] ?: ""),
-                    "answer_c" to (answers["answer_c"] ?: ""),
-                    "answer_d" to (answers["answer_d"] ?: ""),
-                    "answer_e" to (answers["answer_e"] ?: ""),
-                    "answer_f" to (answers["answer_f"] ?: "")
+                    "answer_a_correct" to (answers["answer_a"] ?: ""),
+                    "answer_b_correct" to (answers["answer_b"] ?: ""),
+                    "answer_c_correct" to (answers["answer_c"] ?: ""),
+                    "answer_d_correct" to (answers["answer_d"] ?: ""),
+                    "answer_e_correct" to (answers["answer_e"] ?: ""),
+                    "answer_f_correct" to (answers["answer_f"] ?: "")
                 )
 
                 Log.d(
