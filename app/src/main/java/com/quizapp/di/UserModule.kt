@@ -8,6 +8,6 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val userModule = module {
-single { QuizDatabase.getDatabase(get()) }
-singleOf(::UserRepositoryImpl).bind(UserRepository::class)
+    single { QuizDatabase.getDatabase(get()) }
+    singleOf(::UserRepositoryImpl).bind(UserRepository::class)
 }

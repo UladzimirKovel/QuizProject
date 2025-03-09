@@ -12,7 +12,11 @@ sealed class GameState {
         val score: Int
     ) : GameState()
 
-    data class Finished(val finalScore: Int, val totalQuestions: Int) : GameState()
+    data class Finished(
+        val finalScore: Int,
+        val totalQuestions: Int,
+        val currentQuestion: Question
+    ) : GameState()
 
     object Error : GameState()
 }

@@ -18,5 +18,17 @@
     <string name="all_games">All games</string>
     <string name="delete_account">Delete account</string>
     <string name="log_out">Log out</string>
+    <string name="clear_favorites">Clear favorites</string>
+    <string name="select_category">Select category</string>
+    <string name="select_the_number_of_questions">Select the number of questions</string>
+    <string name="select_difficulty">Select difficulty</string>
+    <string name="start_quiz">Start quiz</string>
+    <string name="back">Back</string>
+    <string name="the_quiz_is_completed">The quiz is completed!</string>
+    <string name="play_again">Play again</string>
+    <string name="save_quiz">Save quiz</string>
+    <string name="save_result">Save result</string>
+    <string name="results">Results</string>
+    <string name="clear_results">Clear results</string>
 
 </resources>

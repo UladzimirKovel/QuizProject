@@ -37,4 +37,7 @@
     <color name="grey_400">#BDBDBD</color>
     <color name="grey_500">#9E9E9E</color>
     <color name="grey_700">#616161</color>
+
+    <color name="correct_answer">#00E676</color>
+    <color name="wrong_answer">#FF3D00</color>
 </resources>

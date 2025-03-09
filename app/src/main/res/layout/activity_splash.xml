@@ -9,8 +9,8 @@
 
     <FrameLayout
         android:id="@+id/motion"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="@dimen/dimen_400dp"
+        android:layout_height="@dimen/dimen_400dp"
         android:background="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/logo_white"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="@dimen/dimen_350dp"
+        android:layout_height="@dimen/dimen_350dp"
         android:background="@drawable/image_quiz"
         android:backgroundTint="@color/deepOrange_400"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,8 +30,8 @@
 
     <ImageView
         android:id="@+id/logo_black"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="@dimen/dimen_350dp"
+        android:layout_height="@dimen/dimen_350dp"
         android:background="@drawable/image_quiz"
         android:backgroundTint="@color/indigo_500"
         app:layout_constraintBottom_toBottomOf="parent"

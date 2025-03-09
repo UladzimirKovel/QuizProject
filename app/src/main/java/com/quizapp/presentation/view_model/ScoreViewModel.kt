@@ -23,17 +23,17 @@ class ScoreViewModel(
         }
     }
 
-    fun addScore(score: ScoreEntity) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertScore(score)
-            loadScores() // Перезагружаем список после добавления
-        }
-    }
-
     fun deleteScore() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllScore()
             _score.postValue(emptyList())
+        }
+    }
+
+    fun deleteScoreById(scoreId: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteQuiz(scoreId)
+            loadScores() // Перезагружаем список после удаления
         }
     }
 }

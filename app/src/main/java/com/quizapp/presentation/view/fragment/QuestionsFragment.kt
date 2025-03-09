@@ -1,6 +1,7 @@
 package com.quizapp.presentation.view.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.quizapp.R
 import com.quizapp.databinding.FragmentQuestionsBinding
 import com.quizapp.domain.model.GameState
 import com.quizapp.presentation.view_model.QuestionsViewModel
@@ -16,7 +18,6 @@ import org.koin.android.ext.android.inject
 
 class QuestionsFragment : Fragment() {
 
-    private val TAG = "QuestionsFragment"
     private var _binding: FragmentQuestionsBinding? = null
     private val binding get() = _binding!!
 
@@ -28,7 +29,6 @@ class QuestionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentQuestionsBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -39,13 +39,13 @@ class QuestionsFragment : Fragment() {
         val difficulty = QuestionsFragmentArgs.fromBundle(requireArguments()).difficulty
         val questionCount = QuestionsFragmentArgs.fromBundle(requireArguments()).limits
 
-        Log.d(
-            TAG,
-            "Starting new game: category=$category, difficulty=$difficulty, count=$questionCount"
-        )
         viewModel.loadQuestions(category, difficulty, questionCount)
         setupObservers()
 
+        clickInit()
+    }
+
+    private fun clickInit() {
         binding.acbBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -53,7 +53,6 @@ class QuestionsFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.gameState.observe(viewLifecycleOwner) { state ->
-            Log.d(TAG, "Game state changed: $state")
             when (state) {
                 is GameState.Loading -> {
                     showLoading(true)
@@ -67,12 +66,13 @@ class QuestionsFragment : Fragment() {
                 is GameState.Finished -> {
                     val finalScore = state.finalScore
                     val total = state.totalQuestions
-                    Log.d(TAG, "Game finished - Score: $finalScore/$total")
+                    val currentQuestion = state.currentQuestion.question
 
                     val action =
                         QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment(
                             score = finalScore,
-                            totalQuestions = total
+                            totalQuestions = total,
+                            question = currentQuestion
                         )
                     findNavController().navigate(action)
                 }
@@ -112,31 +112,20 @@ class QuestionsFragment : Fragment() {
             val answerButtons =
                 listOf(acbAnswer1, acbAnswer2, acbAnswer3, acbAnswer4, acbAnswer5, acbAnswer6)
 
-            // Очищаем все кнопки
+            // Очищаем все кнопки и включаем их
             answerButtons.forEach { button ->
                 button.apply {
                     text = ""
                     isVisible = false
                     setOnClickListener(null)
+                    setBackgroundResource(R.drawable.acb_bg) // Сбрасываем цвет фона
+                    isEnabled = true // Включаем кнопку
                 }
             }
 
-            // Логируем текущий вопрос
-            Log.d(TAG, "Showing question ${state.currentIndex + 1}/${state.totalQuestions}")
-            Log.d(TAG, "Question: ${state.currentQuestion.question}")
-            Log.d(TAG, "Current score: ${state.score}")
-
             // Получаем ответы из Map
             val currentAnswers = state.currentQuestion.answers
-            Log.d(TAG, "Answers:")
             currentAnswers?.let { answers ->
-                Log.d(TAG, "  A: '${answers["answer_a"]}'")
-                Log.d(TAG, "  B: '${answers["answer_b"]}'")
-                Log.d(TAG, "  C: '${answers["answer_c"]}'")
-                Log.d(TAG, "  D: '${answers["answer_d"]}'")
-                Log.d(TAG, "  E: '${answers["answer_e"]}'")
-                Log.d(TAG, "  F: '${answers["answer_f"]}'")
-
                 // Устанавливаем ответы на кнопки
                 val answersList = listOf(
                     "answer_a_correct" to (answers["answer_a"] ?: ""),
@@ -147,31 +136,46 @@ class QuestionsFragment : Fragment() {
                     "answer_f_correct" to (answers["answer_f"] ?: "")
                 )
 
-                Log.d(
-                    TAG,
-                    "Available answer keys in correct_answers: ${state.currentQuestion.correctAnswers?.keys}"
-                )
-
                 answersList.forEachIndexed { index, (key, value) ->
                     if (index < answerButtons.size && value.isNotEmpty()) {
                         answerButtons[index].apply {
                             text = value
                             isVisible = true
                             setOnClickListener {
-                                Log.d(TAG, "Selected answer - Key: '$key', Value: '$value'")
-                                Log.d(
-                                    TAG,
-                                    "Is this key present in correct_answers? ${
-                                        state.currentQuestion.correctAnswers?.containsKey(key)
-                                    }"
-                                )
-                                viewModel.checkAnswer(key)
+
+                                // Проверяем правильность ответа
+                                val isCorrect = state.currentQuestion.correctAnswers?.get(key)
+                                    ?.lowercase() in listOf("true", "1", "yes")
+
+                                // Меняем цвет кнопки в зависимости от правильности ответа
+                                if (isCorrect) {
+                                    setBackgroundColor(
+                                        resources.getColor(
+                                            R.color.correct_answer,
+                                            null
+                                        )
+                                    )
+                                } else {
+                                    setBackgroundColor(
+                                        getResources().getColor(
+                                            R.color.wrong_answer,
+                                            null
+                                        )
+                                    )
+                                }
+
+                                // Отключаем все кнопки после ответа
+                                answerButtons.forEach { it.isEnabled = false }
+
+                                // Задержка перед переходом к следующему вопросу
+                                postDelayed({
+                                    viewModel.checkAnswer(key)
+                                }, 1500)
                             }
                         }
                     }
                 }
             } ?: run {
-                Log.e(TAG, "Answers map is null")
                 showError()
             }
         }

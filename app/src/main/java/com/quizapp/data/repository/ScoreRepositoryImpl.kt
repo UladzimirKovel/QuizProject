@@ -23,4 +23,8 @@ class ScoreRepositoryImpl(
     override suspend fun deleteAllScore() {
         userDatabase.scoreDao().deleteAllScores()
     }
+
+    override suspend fun deleteQuiz(quizId: Long) {
+        userDatabase.scoreDao().deleteQuiz(quizId)
+    }
 }

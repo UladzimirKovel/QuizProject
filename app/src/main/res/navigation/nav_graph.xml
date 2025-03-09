@@ -29,6 +29,9 @@
             <argument
                 android:name="totalQuestions"
                 app:argType="integer" />
+            <argument
+                android:name="question"
+                app:argType="string" />
         </action>
         <action
             android:id="@+id/action_questionsFragment_to_scoreFragment"
@@ -89,6 +92,9 @@
         <argument
             android:name="totalQuestions"
             app:argType="integer" />
+        <argument
+            android:name="question"
+            app:argType="string" />
         <action
             android:id="@+id/action_resultFragment_to_gameFragment"
             app:destination="@id/gameFragment" />

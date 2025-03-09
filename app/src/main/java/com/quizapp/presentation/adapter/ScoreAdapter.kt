@@ -10,7 +10,9 @@ import com.quizapp.databinding.ItemScoreBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScoreAdapter : ListAdapter<ScoreEntity, ScoreAdapter.ScoreViewHolder>(ScoreDiffCallback()) {
+class ScoreAdapter(
+    private val onDeleteClick: (ScoreEntity) -> Unit
+) : ListAdapter<ScoreEntity, ScoreAdapter.ScoreViewHolder>(ScoreDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScoreViewHolder {
         val binding = ItemScoreBinding.inflate(
@@ -25,7 +27,7 @@ class ScoreAdapter : ListAdapter<ScoreEntity, ScoreAdapter.ScoreViewHolder>(Scor
         holder.bind(getItem(position))
     }
 
-    class ScoreViewHolder(
+    inner class ScoreViewHolder(
         private val binding: ItemScoreBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -37,6 +39,11 @@ class ScoreAdapter : ListAdapter<ScoreEntity, ScoreAdapter.ScoreViewHolder>(Scor
                 // Форматируем дату
                 val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
                 tvDate.text = "Date: ${dateFormat.format(Date(score.timestamp))}"
+
+                // Добавляем обработчик нажатия на кнопку удаления
+                buttonDelete.setOnClickListener {
+                    onDeleteClick(score)
+                }
             }
         }
     }

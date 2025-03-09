@@ -11,4 +11,6 @@ interface ScoreRepository {
     suspend fun getUserScores(userId:String): List<ScoreEntity>
 
     suspend fun deleteAllScore()
+
+    suspend fun deleteQuiz(quizId: Long)
 }

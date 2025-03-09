@@ -12,7 +12,6 @@ import com.quizapp.domain.repository.UserRepository
 import com.quizapp.domain.use_cases.isEmailValid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class LoginViewModel(
     private val repository: UserRepository
