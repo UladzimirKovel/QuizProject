@@ -23,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityLoginBinding.inflate(layoutInflater)
 
+        viewModel.currentUser?.let {
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
+        }
+
         viewModel.registrationUser.observe(this, Observer { success ->
             success?.let {
                 if(it) {
@@ -61,5 +66,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+        viewModel.registrationUser.removeObservers(this)
     }
 }

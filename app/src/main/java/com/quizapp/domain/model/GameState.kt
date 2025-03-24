@@ -3,7 +3,7 @@ package com.quizapp.domain.model
 import com.quizapp.data.model.Question
 
 sealed class GameState {
-    object Loading : GameState()
+    data object Loading : GameState()
 
     data class Playing(
         val currentQuestion: Question,
@@ -18,5 +18,5 @@ sealed class GameState {
         val currentQuestion: Question
     ) : GameState()
 
-    object Error : GameState()
+    data class Error(val message: String) : GameState()
 }

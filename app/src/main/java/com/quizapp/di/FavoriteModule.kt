@@ -22,5 +22,5 @@ val favoriteModule = module {
     }
 }
 //quiz -> ... - параметр лямбда-функции. Когда пользователь нажимает на кнопку удаления, адаптер передает в эту функцию объект FavoriteQuizEntity (который мы назвали quiz).
-//get<FavoriteQuizViewModel>() - получение экземпляра FavoriteQuizViewModel из контейнера Koin. Это позволяет нам получить доступ к ViewModel прямо из адаптера.
+//get<FavoriteViewModel>() - получение экземпляра FavoriteQuizViewModel из контейнера Koin. Это позволяет нам получить доступ к ViewModel прямо из адаптера.
 //.deleteFavoriteQuiz(quiz.id, quiz.userId) - вызов метода удаления квиза из избранного, передавая ID квиза и ID пользователя.

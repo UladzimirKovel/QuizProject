@@ -1,7 +1,6 @@
 package com.quizapp.presentation.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,10 +53,12 @@ class ResultFragment : Fragment() {
 
         binding.acbFavoriteSave.setOnClickListener {
             loginViewModel.currentUser?.let { user ->
+                loginViewModel.registrationUser // Проверить 
                 favoriteViewModel.addFavoriteQuiz(
                     userId = user.user,
                     question = args.question
                 )
+                // Сделать так,чтобы сохранялся квиз только этого пользователя
                 Toast.makeText(requireContext(), "Added to favorites", Toast.LENGTH_SHORT).show()
             }
         }

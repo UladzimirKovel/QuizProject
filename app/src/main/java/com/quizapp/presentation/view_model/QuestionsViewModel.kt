@@ -1,17 +1,16 @@
 package com.quizapp.presentation.view_model
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.quizapp.data.model.Question
-import com.quizapp.data.repository.RetrofitClient
+import com.quizapp.domain.exceptions.QuizExceptions
 import com.quizapp.domain.model.GameState
+import com.quizapp.domain.use_cases.GetQuestionsUseCase
 import kotlinx.coroutines.launch
 
-class QuestionsViewModel : ViewModel() {
-
+class QuestionsViewModel(private val getQuestionsUseCase: GetQuestionsUseCase) : ViewModel() {
     private val apiKey = "HaMStVN8pjYI5NysWMiSpBDTzprHNeBOE3ORm6sn"
 
     private val _gameState = MutableLiveData<GameState>()
@@ -27,46 +26,32 @@ class QuestionsViewModel : ViewModel() {
         currentCategory = category
         currentDifficulty = difficulty
         viewModelScope.launch {
+            _gameState.value = GameState.Loading
+            score = 0
+            currentQuestionIndex = 0
+
             try {
-                _gameState.value = GameState.Loading
-                score = 0
-                currentQuestionIndex = 0
-
-                val response = RetrofitClient.apiService.getQuestions(
-                    apiKey = apiKey,
-                    category = category,
-                    difficulty = difficulty,
-                    limit = limit
+                //Вызываем use case
+                questions = getQuestionsUseCase(apiKey, category, difficulty, limit)
+                _gameState.value = GameState.Playing(
+                    currentQuestion = questions[0],
+                    currentIndex = 0,
+                    totalQuestions = questions.size,
+                    score = 0
                 )
-
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null && responseBody.isNotEmpty()) {
-                        questions = responseBody
-                        _gameState.value = GameState.Playing(
-                            currentQuestion = questions[0],
-                            currentIndex = 0,
-                            totalQuestions = questions.size,
-                            score = 0
-                        )
-                    } else {
-                        _gameState.value = GameState.Error
-                    }
-                } else {
-                    _gameState.value = GameState.Error
-                }
-            } catch (e: Exception) {
-                _gameState.value = GameState.Error
+            } catch (e: QuizExceptions) {
+                _gameState.value = GameState.Error(e.message ?: "Unknown error")
             }
         }
     }
 
     fun checkAnswer(selectedAnswer: String) {
         val currentState = _gameState.value
+        // Проверяем, что игра находится в состоянии Playing
         if (currentState !is GameState.Playing) {
             return
         }
-
+        // Получаем текущий вопрос
         val currentQuestion = questions[currentQuestionIndex]
 
         // Проверяем, является ли выбранный ответ правильным
@@ -74,18 +59,15 @@ class QuestionsViewModel : ViewModel() {
 
         val isCorrect = when (correctAnswerValue?.lowercase()) {
             "true" -> true
-            "1" -> true
-            "yes" -> true
             else -> false
         }
-
+        // Если ответ правильный, увеличиваем счет
         if (isCorrect) {
             score++
-        } else {
-
         }
 
         currentQuestionIndex++
+        // Проверяем, есть ли еще вопросы
         if (currentQuestionIndex < questions.size) {
             val nextQuestion = questions[currentQuestionIndex]
             _gameState.value = GameState.Playing(

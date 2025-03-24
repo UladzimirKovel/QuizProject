@@ -1,6 +1,5 @@
 package com.quizapp.data.repository
 
-import android.util.Log
 import com.quizapp.data.database.QuizDatabase
 import com.quizapp.data.entities.FavoriteEntity
 import com.quizapp.domain.repository.FavoriteRepository

@@ -52,7 +52,7 @@ class GameFragment : Fragment() {
 
     private fun loadButton() {
         binding.startButton.setOnClickListener {
-            val category = binding.categorySpinner.selectedItem?.toString() ?: return@setOnClickListener
+            val category = binding.categorySpinner.selectedItem?.toString() ?: return@setOnClickListener // Элвис проверят,явл ли знач слева null
             val limits = binding.limitSpinner.selectedItem?.toString()?.toIntOrNull() ?: return@setOnClickListener
             val difficulty = binding.difficultySpinner.selectedItem?.toString() ?: return@setOnClickListener
 

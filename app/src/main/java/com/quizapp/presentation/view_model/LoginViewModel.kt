@@ -29,7 +29,17 @@ class LoginViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             val success = repository.registrationUser(user, email)
             _registrationUser.postValue(success)
+            if (success == true) {
+                currentUser = repository.loginUser(user)
+            } else {
+                currentUser = null
+            }
         }
+    }
+
+    fun logoutUser() {
+        currentUser = null
+        _registrationUser.value = null
     }
 
     fun loginUser(user: String) {
@@ -110,4 +120,9 @@ class LoginViewModel(
             else -> true
         }
     }
+
+    data class User(
+        val user: String,
+        val email: String
+    )
 }

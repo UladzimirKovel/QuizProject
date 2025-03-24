@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,9 +18,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.quizapp.R
-import com.quizapp.presentation.view.fragment.FavoriteFragment
-import com.quizapp.presentation.view.fragment.GameFragment
-import com.quizapp.presentation.view.fragment.ScoreFragment
 import com.quizapp.presentation.view_model.LoginViewModel
 import org.koin.android.ext.android.inject
 
@@ -81,6 +77,10 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.quit -> {
+                    viewModel.currentUser?.let { user ->
+                    viewModel.logoutUser()
+//                        viewModel.registrationUser
+                    }
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     finish()
                     true

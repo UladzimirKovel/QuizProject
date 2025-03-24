@@ -1,8 +1,6 @@
 package com.quizapp.presentation.view.fragment
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,6 +81,13 @@ class QuestionsFragment : Fragment() {
                 }
             }
         }
+
+//        // Отписываемся от всех наблюдаемых объектов при уничтожении фрагмента
+//        lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.DESTROYED) {
+//                viewModel.gameState.removeObservers(viewLifecycleOwner)
+//            }
+//        }
     }
 
     private fun showLoading(show: Boolean) {
@@ -99,7 +104,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun showError() {
-        Toast.makeText(requireContext(), "Ошибка загрузки вопросов", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Error loading questions", Toast.LENGTH_SHORT).show()
         findNavController().popBackStack()
     }
 
@@ -112,7 +117,7 @@ class QuestionsFragment : Fragment() {
             val answerButtons =
                 listOf(acbAnswer1, acbAnswer2, acbAnswer3, acbAnswer4, acbAnswer5, acbAnswer6)
 
-            // Очищаем все кнопки и включаем их
+            // Очищаем все кнопки и включаем их(перебираем все элементы)
             answerButtons.forEach { button ->
                 button.apply {
                     text = ""
@@ -184,5 +189,6 @@ class QuestionsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        viewModel.gameState.removeObservers(viewLifecycleOwner)
     }
 }

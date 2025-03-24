@@ -1,10 +1,13 @@
 package com.quizapp
 
 import android.app.Application
+import com.quizapp.di.databaseModule
 import com.quizapp.di.favoriteModule
 import com.quizapp.di.loginViewModelModule
+import com.quizapp.di.networkModule
 import com.quizapp.di.resultViewModelModule
 import com.quizapp.di.questionViewModelModule
+import com.quizapp.di.quizRepositoryModule
 import com.quizapp.di.scoreModule
 import com.quizapp.di.userModule
 import org.koin.android.ext.koin.androidContext
@@ -29,7 +32,10 @@ class App : Application() {
                 userModule,
                 questionViewModelModule,
                 scoreModule,
-                favoriteModule
+                favoriteModule,
+                networkModule,
+                databaseModule,
+                quizRepositoryModule
             )
         }
     }

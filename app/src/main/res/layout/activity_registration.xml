@@ -71,6 +71,7 @@
         android:inputType="textEmailAddress"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/et_registration"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_registration"
         app:layout_constraintTop_toBottomOf="@id/et_registration"
         tools:ignore="MissingConstraints" />

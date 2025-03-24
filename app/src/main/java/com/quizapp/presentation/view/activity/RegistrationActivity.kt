@@ -36,8 +36,8 @@ class RegistrationActivity: AppCompatActivity() {
                 ).show()
             }
         })
-        setupListener()
 
+        setupListener()
         setContentView(binding.root)
     }
 
@@ -59,5 +59,6 @@ class RegistrationActivity: AppCompatActivity() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+        viewModel.registrationUser.removeObservers(this)
     }
 }

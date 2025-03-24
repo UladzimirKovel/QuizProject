@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/questionsFragment"
         android:name="com.quizapp.presentation.view.fragment.QuestionsFragment"
-        android:label="QuestionsFragment" >
+        android:label="QuestionsFragment">
         <argument
             android:name="category"
             app:argType="string" />
@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.quizapp.presentation.view.fragment.GameFragment"
-        android:label="GameFragment" >
+        android:label="GameFragment">
         <action
             android:id="@+id/action_gameFragment_to_questionsFragment"
             app:destination="@id/questionsFragment">
@@ -85,7 +85,7 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.quizapp.presentation.view.fragment.ResultFragment"
-        android:label="ResultFragment" >
+        android:label="ResultFragment">
         <argument
             android:name="score"
             app:argType="integer" />
@@ -111,7 +111,7 @@
     <fragment
         android:id="@+id/scoreFragment"
         android:name="com.quizapp.presentation.view.fragment.ScoreFragment"
-        android:label="ScoreFragment" >
+        android:label="ScoreFragment">
         <action
             android:id="@+id/action_scoreFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
